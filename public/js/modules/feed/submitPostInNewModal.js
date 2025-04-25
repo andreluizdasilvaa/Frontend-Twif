@@ -66,7 +66,7 @@ export default function submitPostInNewModal() {
         };
 
         try {
-            const resposta = await fetch(`${CONFIG.URL_API}/feed`, {
+            const resposta = await fetch(`${CONFIG.URL_API}/feed/create/post`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

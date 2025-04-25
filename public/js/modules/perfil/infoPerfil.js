@@ -18,7 +18,7 @@ export default function infoPerfil() {
         return `${dia}/${mes}/${ano}`;
     }
 
-    fetch(`${CONFIG.URL_API}/api/perfil/${usernick}`, {
+    fetch(`${CONFIG.URL_API}/user/perfil/${usernick}`, {
         credentials: 'include'
     })
         .then((response) => {
