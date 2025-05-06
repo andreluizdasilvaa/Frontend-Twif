@@ -279,6 +279,12 @@ button.filesPost {
 
 }
 
+.inicio{
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
 /* ===== Informações do Usuário no Modal ===== */
 .user-info {
     display: flex;
@@ -850,7 +856,7 @@ body.dark-mode #darkModeToggle{
     justify-content: space-around;
     align-items: center;
     padding: 10px;
-    margin-bottom: 390px;
+    /* margin-bottom: 390px; */
 
     font-family: 'Lexend Deca';
     font-size: 12px;
@@ -866,6 +872,41 @@ body.dark-mode #darkModeToggle{
     transition: all 0.2s;
     box-shadow: 5px 5px 0px black;
     text-decoration: none;
+}
+
+.editarPerfilLink{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    /* margin-bottom: 85px; */
+
+    font-family: 'Lexend Deca';
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #011214;
+    background-color: #7ec543;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 5px 5px 0px black;
+    text-decoration: none;
+}
+
+.editarPerfilLink img{
+    width: 20px;
+    height: 20px;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 a{
