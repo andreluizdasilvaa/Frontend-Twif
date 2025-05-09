@@ -262,6 +262,20 @@ input::placeholder {
     cursor: pointer;
 }
 
+select{
+    width: 105%;
+    padding: 10px;
+    resize: none;
+    border-radius: 10px;
+    font-family: 'Lexend Deca';
+    border: solid 3px #011214;
+    padding-left: 34px;
+}
+
+select:focus {
+    outline: none;
+}
+
 /* -------------------------------------
    SELEÇÃO DE AVATAR
 ------------------------------------- */
@@ -362,5 +376,9 @@ body.dark-mode .upload-box{
 }
 
 body.dark-mode #bio{
+    border: none;
+}
+
+body.dark-mode select{
     border: none;
 }
