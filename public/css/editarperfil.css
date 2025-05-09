@@ -203,7 +203,7 @@ input::placeholder {
     cursor: pointer;
     box-shadow: 5px 5px 0px black;
     transition: background 0.2s;
-    margin-top: 70px;
+    margin-top: 51px;
 }
 
 .update-btn:hover {
@@ -334,4 +334,33 @@ input::placeholder {
 .avatar-button.selected img {
     transform: scale(1.1);
     border: 5px solid var(--azul-escuro-A);
+}
+
+
+/* -------------------------------------
+   MODO ESCURO
+------------------------------------- */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+body.dark-mode .edit-container{
+    background-color: #032F37;
+    border: #7ec543 3px solid;
+    box-shadow: 11px 12px 0px 0px #7ec543;
+}
+
+body.dark-mode input{
+    border: none;
+}
+
+body.dark-mode .upload-box{
+    border: #7ec543 3px dashed;
+    border-radius: 10px;
+}
+
+body.dark-mode #bio{
+    border: none;
 }
