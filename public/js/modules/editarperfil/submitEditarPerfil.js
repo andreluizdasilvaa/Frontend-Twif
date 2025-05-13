@@ -16,7 +16,7 @@ export default function submitEditarPerfil() {
         };
 
         try {
-            const resposta = await fetch('http://localhost:3001/editar/usuario/editar', {
+            const resposta = await fetch('http://localhost:3000/editar/usuario/editar', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
@@ -30,7 +30,14 @@ export default function submitEditarPerfil() {
 
             const resultado = await resposta.json();
             alert('Perfil atualizado com sucesso!');
-            // window.location.href = '/perfil.html'; // Redireciona se quiser
+            
+            // Redireciona para o perfil do usuário usando o usernick retornado
+            if (resultado.user && resultado.user.usernick) {
+                window.location.href = `/perfil/${resultado.user.usernick}`;
+            } else {
+                // Fallback caso não tenha usernick na resposta
+                window.location.href = '/feed';
+            }
         } catch (err) {
             console.error("Erro:", err);
             alert(err.message);
