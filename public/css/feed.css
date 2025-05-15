@@ -964,7 +964,35 @@ a{
     width: 12px;
     transition-duration: 0.3s;
   }
-  
+
+ /* Estilo do botão "Carregar Mais" */
+.load-more-btn {
+    display: block;
+    width: 200px;
+    margin: 30px auto;
+    padding: 12px;
+    background-color: #7ec543;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.load-more-btn:hover {
+    background-color: #6cb035;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.load-more-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
   .svgIcon path {
     fill: white;
   }
