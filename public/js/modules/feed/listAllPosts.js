@@ -3,53 +3,35 @@ import likedPost from './likedPostOrNot.js';
 import commentPost from './commentPost.js';
 import verifyErrorsApi from "../utils/verifyErrorsApi.js";
 
-let currentPage = 1;
-const limit = 5; // 5 posts por página (ajuste conforme necessário)
-
 export default function listAllPost() {
-    loadPosts(currentPage);
-    setupLoadMoreButton();
-}
-
-function loadPosts(page) {
-    fetch(`${CONFIG.URL_API}/feed/posts?page=${page}&limit=${limit}`, {
+    fetch(`${CONFIG.URL_API}/feed/posts`, {
         credentials: 'include'
     })
-    .then(response => {
-        if (!response.ok) {
-            verifyErrorsApi(response);
-            throw new Error('Erro ao carregar posts');
-        }
-        return response.json();
-    })
-    .then(data => {
-        const postsList = document.getElementById('posts');
-        
-        // Limpa apenas na primeira página
-        if (page === 1) {
-            postsList.innerHTML = '';
-        }
+        .then((response) => {
+            if (!response.ok) {
+                verifyErrorsApi(response);
+                console.error('Erro na requisição', response);
+                return;
+            }
+            return response.json();
+        })
+        .then((posts) => {
+            // apenas para poder ver a animação de load( remover dps )
+            setTimeout(() => {
+                const postsList = document.getElementById('posts');
+                postsList.innerHTML = ''; // Limpa a lista após 2 segundos
 
-        if (data.posts && data.posts.length > 0) {
-            data.posts.forEach(post => {
-                const postElement = createPostElement(post);
-                postsList.appendChild(postElement);
-                
-                // Mantém as funções originais de like e comentário
-                likedPost(post, postElement);
-                commentPost(postElement);
-            });
-            
-            currentPage = page;
-            updateLoadMoreButton(data.totalPages);
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-    });
+                posts.forEach((post) => {
+                    const postElement = createPostElement(post);
+                    postsList.appendChild(postElement);
+                    likedPost(post, postElement);
+                    commentPost(postElement);
+                });
+            }, 1000);
+        });
 }
 
-// Função que mantém SEU LAYOUT ORIGINAL
+// Função auxiliar para criar o elemento do post
 function createPostElement(post) {
     const postElement = document.createElement('li');
     postElement.dataset.postId = post.id;
@@ -80,54 +62,18 @@ function createPostElement(post) {
             </div>
             <div class="content_metric">
                 <p class="number_coments">${post.comments.length}</p>
-                <button type="button" class="filesPost comment">
-                    <i class="ph-bold ph-chat-circle"></i>
-                </button>
+                <button type="button" class="filesPost comment"><i class="ph-bold ph-chat-circle"></i></button>
             </div>
         </div>
     `;
 
-    // Remove as animações de loading (mantém igual ao seu código original)
+    // Remover animações
     const nameAndHour = postElement.querySelector('.nameAndHour');
     const imgUserPost = postElement.querySelector('.imgUserPost');
     const contentPostLoading = postElement.querySelector('.content_post_loading');
-    
     if (nameAndHour) nameAndHour.style.animation = 'none';
     if (imgUserPost) imgUserPost.style.animation = 'none';
     if (contentPostLoading) contentPostLoading.style.animation = 'none';
 
     return postElement;
-}
-
-// Configura o botão "Carregar Mais"
-function setupLoadMoreButton() {
-    const existingBtn = document.getElementById('loadMoreBtn');
-    if (!existingBtn) {
-        const loadMoreBtn = document.createElement('button');
-        loadMoreBtn.id = 'loadMoreBtn';
-        loadMoreBtn.textContent = 'Carregar Mais Posts';
-        loadMoreBtn.className = 'load-more-btn';
-        loadMoreBtn.addEventListener('click', () => {
-            loadMoreBtn.disabled = true;
-            loadMoreBtn.textContent = 'Carregando...';
-            loadPosts(currentPage + 1);
-        });
-        
-        // Adiciona o botão após a lista de posts
-        document.querySelector('main').appendChild(loadMoreBtn);
-    }
-}
-
-// Atualiza o botão conforme a paginação
-function updateLoadMoreButton(totalPages) {
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    if (loadMoreBtn) {
-        if (currentPage < totalPages) {
-            loadMoreBtn.style.display = 'block';
-            loadMoreBtn.disabled = false;
-            loadMoreBtn.textContent = 'Carregar Mais Posts';
-        } else {
-            loadMoreBtn.style.display = 'none';
-        }
-    }
 }
