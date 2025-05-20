@@ -50,7 +50,7 @@ export default function registerForm() {
                 .then(data => {
                     // fazer um melhor tratamento!
                     alert('Cadastro realizado com sucesso! Bem-vindo(a), ' + nome + '!');
-                    data.redirect ? window.location.href = data.redirect : null
+                    window.location.href = '/feed';
                 })
                 .catch(error => {
                     console.error('Erro:', error);
