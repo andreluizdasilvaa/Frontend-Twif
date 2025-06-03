@@ -29,8 +29,17 @@ app.get('/sobrenos', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'html', 'sobrenos.html'));
 });
 
+
+app.get('/fix-problem', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'html', 'fix-problem.html'));
+});
+
 app.get('/feed', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'html', 'feed.html'));
+});
+
+app.get('/editarperfil', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public', 'html', 'editarperfil.html'));
 });
 
 app.get('/perfil/:usernick', (req, res) => {

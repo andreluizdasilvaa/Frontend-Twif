@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil - Twif</title>
+  <link rel="stylesheet" href="../css/editarperfil.css">
+  <link
+    rel="stylesheet"
+    type="text/css"
+    href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Logo no topo -->
+  <img id="logo_header" src="../assets/img/logo-dark.svg">
+
+  <!-- Container do formulário de edição -->
+  <div class="edit-container">
+    <h2>Editar Informações do Usuário</h2>
+
+    <form id="formPerfil">
+      <!-- Seção de Informações Básicas -->
+      <div class="current-info">
+        <div class="info-item">
+          <div class="info-content">
+            <!-- Nome -->
+            <div class="input-container">
+              <i class="ph ph-smiley-wink"></i>
+              <input type="text" id="nome" placeholder="Nome">
+            </div>
+
+            <!-- Curso (refatorado para select) -->
+            <div class="input-container">
+              <i class="ph ph-star"></i>
+              <select id="course">
+                <option selected disabled value="">Selecione seu curso</option>
+                <option value="Tec. em T.I.">Técnico em T.I.</option>
+                <option value="Tec. em ADM">Técnico em ADM</option>
+                <option value="Tec. em Edificações">Técnico em Edificações</option>
+                <option value="Tec. em Meio Ambiente">Técnico em Meio Ambiente</option>
+                <option value="Engenharia Civil">Engenharia Civil</option>
+                <option value="ADS">Análise e Desenvolvimento de Sistemas</option>
+                <option value="Física">Física</option>
+                <option value="Química">Química</option>
+                <option value="Processos Gerenciais">Processos Gerenciais</option>
+                <option value="Matemática">Matemática</option>
+              </select>
+            </div>
+
+            <!-- Usernick -->
+            <div class="input-container">
+              <i class="ph ph-at"></i>
+              <input type="text" id="usernick" placeholder="Usernick">
+            </div>
+
+            <!-- Data de nascimento -->
+            <div class="input-container">
+              <i class="ph ph-cake"></i>
+              <input type="date" id="nascimento">
+            </div>
+
+            <!-- Upload de Foto de Perfil -->
+            <div class="photo-upload">
+              <h3>Alterar Foto De Perfil</h3>
+              <div class="upload-box" id="dropZone">
+                <p>Arraste Ou Clique Aqui</p>
+                <input type="file" id="profilePicture" accept="image/*">
+              </div>
+            </div>
+
+            <!-- Avatares existentes -->
+            <div class="icon-writepen" id="troca_perfil">
+              <section class="avatar-existente">
+                <div class="foto-perfil-usuario"></div>
+                <p>Ou utilize um de nossos avatares...</p>
+                <img src="../assets/img/examples.png">
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção de Biografia -->
+      <div class="bio-section">
+        <div class="bioinfo input-container">
+          <i class="ph ph-heart"></i>
+          <textarea id="bio" placeholder="Conte um pouco sobre você..." maxlength="120"></textarea>
+          <div class="char-counter"><span id="char-count">0</span>/120</div>
+        </div>
+
+        <!-- Botão de envio -->
+        <button type="submit" class="update-btn">ATUALIZAR</button>
+      </div>
+
+      <!-- Modal de escolha de avatar -->
+      <div id="avatarModal" class="modal">
+        <form id="form_troca_avatar">
+          <div class="modal-content">
+            <div class="avatar-selection">
+              <div id="button-l">
+                <h2>Escolha seu avatar<span class="bold">.</span></h2>
+                <span class="close">&times;</span>
+              </div>
+
+              <p>Esse será o ícone exibido no seu perfil. Não se preocupe, você poderá alterá-lo quando quiser.</p>
+
+              <!-- Input oculto com o valor do avatar escolhido -->
+              <input type="hidden" value="defaultphoto.png" name="profilePicture" id="avatar-escolhido">
+
+              <!-- Galeria de avatares -->
+              <div class="avatar-options">
+                <!-- Botões com imagens de avatar -->
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile1.png" alt="Avatar 1" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile2.png" alt="Avatar 2" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile3.png" alt="Avatar 3" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile4.png" alt="Avatar 4" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile5.png" alt="Avatar 5" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile6.png" alt="Avatar 6" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile7.png" alt="Avatar 7" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile8.png" alt="Avatar 8" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile9.png" alt="Avatar 9" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile10.png" alt="Avatar 10" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile11.png" alt="Avatar 11" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile12.png" alt="Avatar 12" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile13.png" alt="Avatar 13" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile14.png" alt="Avatar 14" loading="lazy"></button>
+                <button type="button" class="avatar-button"><img src="../assets/profile-pictures/profile15.png" alt="Avatar 15" loading="lazy"></button>
+              </div>
+
+              <!-- Botão para salvar avatar -->
+              <div id="button-r">
+                <button type="submit" id="salvar-avatar">Salvar e ir para login</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="../js/editar-perfil.js"></script>
+  <script type="module" src="../js/modules/perfil/replaceProfilePicture.js"></script>
+</body>
+</html>

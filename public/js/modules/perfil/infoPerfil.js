@@ -11,7 +11,12 @@ export default function infoPerfil() {
     const pathSegments = window.location.pathname.split('/');
     const usernick = pathSegments[pathSegments.length - 1]; // Último segmento da URL
 
-    // Faz a requisição para buscar as informações do usuário
+    function formatarData(dataISO) {
+        if (!dataISO) return '';
+        const [ano, mes, dia] = dataISO.split('-');
+        return `${dia}/${mes}/${ano}`;
+    };
+
     fetch(`${CONFIG.URL_API}/user/perfil/${usernick}`, {
         credentials: 'include'
     })

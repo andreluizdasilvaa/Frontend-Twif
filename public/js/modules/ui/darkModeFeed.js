@@ -20,7 +20,7 @@ export default function darkModeFeed() {
         lampIcon.setAttribute("fill", isDarkMode ? "#011214" : "#7ec543"); // Lâmpada apagada no modo escuro e acesa no modo claro
 
         // Atualiza o texto do toggle
-        toggleText.textContent = isDarkMode ? "Ativar Modo Claro" : "Ativar Modo Escuro"; // Troca o texto
+        toggleText.textContent = isDarkMode ? "Modo Claro" : "Modo Escuro"; // Troca o texto
     }
 
     // Função para aplicar o tema ao carregar a página
@@ -32,11 +32,11 @@ export default function darkModeFeed() {
             body.classList.add('dark-mode');
             logoHeader.src = '../assets/img/logo-white.svg'; // Logo branca
             lampIcon.setAttribute("fill", "#011214"); // Lâmpada apagada no modo escuro
-            toggleText.textContent = "Ativar Modo Claro"; // Texto inicial para modo escuro
+            toggleText.textContent = "Modo Claro"; // Texto inicial para modo escuro
         } else {
             logoHeader.src = '../assets/img/logo-dark.svg'; // Logo colorida como padrão
             lampIcon.setAttribute("fill", "#7ec543"); // Lâmpada acesa no modo claro
-            toggleText.textContent = "Ativar Modo Escuro"; // Texto inicial para modo claro
+            toggleText.textContent = "Modo Escuro"; // Texto inicial para modo claro
         }
     }
 

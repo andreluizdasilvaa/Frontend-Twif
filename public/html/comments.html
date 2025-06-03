@@ -111,7 +111,7 @@
                 }
 
                 function fetchPost() {
-                    fetch(`${CONFIG.URL_API}/post`)
+                    fetch(`${CONFIG.URL_API}/feed//post`)
                         .then((response) => response.json())
                         .then((data) => {
                             // Atualiza o conteúdo do post
@@ -209,7 +209,7 @@
 
                 async function fetchPost() {
                     try {
-                        const response = await fetch(`${CONFIG.URL_API}/posts/${postId}`);
+                        const response = await fetch(`${CONFIG.URL_API}/feed/posts/${postId}`);
                         if (!response.ok) throw new Error(`Erro ${response.status}: Não foi possível carregar o post.`);
 
                         const post = await response.json();
@@ -231,7 +231,7 @@
 
                 async function fetchComments() {
                     try {
-                        const response = await fetch(`${CONFIG.URL_API}/posts/${postId}/comments`, {
+                        const response = await fetch(`${CONFIG.URL_API}/comments/posts/${postId}/comments`, {
                             credentials: 'include'
                         });
                         if (!response.ok) {
@@ -273,7 +273,7 @@
 
                 async function deleteComment(commentId) {
                     try {
-                        const response = await fetch(`${CONFIG.URL_API}/feed/posts/${postId}/comments/${commentId}`, { 
+                        const response = await fetch(`${CONFIG.URL_API}/comments/posts/${postId}/comments/${commentId}`, { 
                             method: 'DELETE',
                             credentials: 'include'
                          });
@@ -330,7 +330,7 @@
                     }
 
                     try {
-                        const response = await fetch(`${CONFIG.URL_API}/posts/${postId}/comments`, {
+                        const response = await fetch(`${CONFIG.URL_API}/comments/posts/${postId}/comments`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             credentials: 'include',
