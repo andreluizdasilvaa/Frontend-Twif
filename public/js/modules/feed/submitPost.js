@@ -19,7 +19,7 @@ export default async function submitPost() {
         // Sanitizando o conteúdo do post
         const conteudoSanitizado = DOMPurify.sanitize(conteudo);
 
-        fetch(`${CONFIG.URL_API}/feed/create/post`, {
+        fetch(`${CONFIG.URL_API}/create/post`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
