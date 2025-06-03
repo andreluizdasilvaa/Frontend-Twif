@@ -11,8 +11,6 @@ export default function registerForm() {
         var email = document.getElementById('email').value;
         var usernick = document.getElementById('user').value;
         var senha = document.getElementById('senha').value;
-        var nascimento = document.getElementById('nascimento').value;
-        var curso = document.getElementById('curso').value;
 
         if (!nome || !email || !usernick || !senha) {
             alert('Por favor, preencha todos os campos obrigatórios antes de prosseguir.');
@@ -34,8 +32,6 @@ export default function registerForm() {
                         usernick: usernick,
                         nome: nome,
                         profilePicture: profilePicture,
-                        nascimento: nascimento,
-                        curso: curso
                     }),
                     credentials: 'include'
                 })
@@ -50,7 +46,7 @@ export default function registerForm() {
                 .then(data => {
                     // fazer um melhor tratamento!
                     alert('Cadastro realizado com sucesso! Bem-vindo(a), ' + nome + '!');
-                    window.location.href = '/feed';
+                    data.redirect ? window.location.href = data.redirect : null
                 })
                 .catch(error => {
                     console.error('Erro:', error);

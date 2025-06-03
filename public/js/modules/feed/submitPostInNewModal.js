@@ -37,7 +37,8 @@ export default function submitPostInNewModal() {
         };
 
         try {
-            const resposta = await fetch(`${CONFIG.URL_API}/feed/create/post`, {
+            // Fazer requisição para a rota existente
+            const resposta = await fetch(`${CONFIG.URL_API}/create/post`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
