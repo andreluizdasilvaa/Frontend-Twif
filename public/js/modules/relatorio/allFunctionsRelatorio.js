@@ -12,8 +12,6 @@ export default function allFunctionRelatorio() {
         await renderUserChart();
     });
 
-    //F
-
     // Função para pegar o total de comentários
     async function getTotalComentarios() {
         try {

@@ -1,34 +1,44 @@
+import CONFIG from "../config.js";
+
+(async function validateSession() {
+    // verifica se o usuario que entrou na pagina está logado para conseguir enviar sua msg no suporte
+    const response = await fetch(`${CONFIG.URL_API}/auth/validate`, {
+        credentials: 'include'
+    })
+    const result = await response.json();
+    if(!result.isAuthenticated) {
+        alert('Você precisa está logado para enviar um suport');
+        window.location.href = "/";
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('button').addEventListener('click', async (event) => {
         event.preventDefault();  // Evita o comportamento padrão de envio de formulário
-
-        const nome = document.getElementById('input-nome').value;
-        const email = document.getElementById('input-email').value;
-        const problema = document.getElementById('input-texto').value;
+        const description = document.getElementById('input-texto').value;
 
         // Verifique se todos os campos foram preenchidos
-        if (!nome || !email || !problema) {
-            alert('Por favor, preencha todos os campos!');
+        if (!description) {
+            alert('Escreva alguma coisa antes de enviar!');
             return;
         }
 
         try {
-            const response = await fetch('http://localhost:3000/suporte/support', {
+            const response = await fetch(`${CONFIG.URL_API}/suport/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ nome, email, problema }),
+                body: JSON.stringify({ description }),
+                credentials: 'include'
             });
 
             const result = await response.json();
             if (response.ok) {
                 alert(result.msg);
-                document.getElementById('input-nome').value = '';
-                document.getElementById('input-email').value = '';
-                document.getElementById('input-texto').value = '';
+                window.location.href = "/";
             } else {
-                alert(result.msg || 'Ocorreu um erro, tente novamente.');
+                alert(result.msg || 'Ocorreu um erro, tente novamente mais tarde.');
             }
         } catch (error) {
             console.error('Erro ao enviar os dados:', error);

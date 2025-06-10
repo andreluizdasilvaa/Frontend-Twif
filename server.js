@@ -29,7 +29,6 @@ app.get('/sobrenos', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'html', 'sobrenos.html'));
 });
 
-
 app.get('/fix-problem', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'html', 'fix-problem.html'));
 });
