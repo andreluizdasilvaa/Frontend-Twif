@@ -9,22 +9,11 @@ function formatarData(dataISO) {
   return data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 }
 
-// Função para retornar ícone SVG conforme a categoria
-function iconeCategoria(categoria) {
-  if (!categoria) return '';
-  if (categoria.toLowerCase() === 'bug') {
-    // SVG bug
-    return `<svg width="24" height="24" fill="none" stroke="#011214" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M19 7l-2 2M5 7l2 2M19 17l-2-2M5 17l2-2M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>`;
-  }
-  // SVG flag
-  return `<svg width="24" height="24" fill="none" stroke="#011214" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a2 2 0 0 1 2-2h14l-2 5 2 5H6"/></svg>`;
-}
-
 export default function exibirProblemas() {
   const container = document.getElementById('problemas-container');
   container.innerHTML = ''; // Limpa o container antes
 
-  fetch(`${CONFIG.URL_API}/api/support`, {
+  fetch(`${CONFIG.URL_API}/suport/`, {
     credentials: 'include'
   })
     .then(response => {
@@ -46,18 +35,18 @@ export default function exibirProblemas() {
 
         card.innerHTML = `
           <div class="header-card">
-            <span class="icone-categoria">${iconeCategoria(pedido.categoria)}</span>
             <div>
-              <strong>${pedido.nome}</strong>
-              <span class="id-email">ID: ${pedido.id} ${pedido.email}</span>
-              <div class="categoria">Categoria: ${pedido.categoria || 'Não informada'}</div>
+              <strong>Nome: <span id="span-color-g">${pedido.nome}</span></strong>
             </div>
           </div>
           <blockquote class="mensagem">“${pedido.problema}”</blockquote>
-          <footer class="data-report">Report enviado no dia ${formatarData(pedido.createdAt)}</footer>
-          <button class="btn-responder" title="Responder">
-            <img src="../assets/img/replyemail.png" alt="Responder" />
-          </button>
+          <footer class="data-report">
+            Report enviado no dia ${formatarData(pedido.createdAt)}
+            <button class="btn-responder" title="Responder">
+              Marcar como visualizado
+              <img src="../assets/img/replyemail.png" alt="Responder" />
+            </button>
+          </footer> 
         `;
 
         container.appendChild(card);
