@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!description) {
             alert('Escreva alguma coisa antes de enviar!');
             return;
+        } else if(description.length > 190) {
+            alert('Maximo de 190 caracteres!');
+            return;
         }
 
         try {
