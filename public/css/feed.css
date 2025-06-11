@@ -830,7 +830,7 @@ body.dark-mode #textarea{
 body.dark-mode #darkModeToggle{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
 
@@ -853,7 +853,7 @@ body.dark-mode #darkModeToggle{
 .relatoriosLink{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
     /* margin-bottom: 390px; */
@@ -877,7 +877,7 @@ body.dark-mode #darkModeToggle{
 .editarPerfilLink{
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
     /* margin-bottom: 85px; */

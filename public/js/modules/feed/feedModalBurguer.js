@@ -35,7 +35,6 @@ export default function toggleModalBurguer(data) {
             credentials: 'include'
         }).then((response) => {
             if (response.ok) {
-                alert('Sessão encerrada!');
                 window.location.href = '/';
             } else {
                 console.error(response.error);
