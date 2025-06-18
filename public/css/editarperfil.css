@@ -1,10 +1,20 @@
 /* -------------------------------------
-   GERAL
+    GERAL
 ------------------------------------- */
+:root {
+    /* Definir variáveis de cor para facilitar a manutenção */
+    --cor-primaria: #011214;
+    --cor-secundaria: #7ec543;
+    --cor-fundo: #fff;
+    --cor-texto: #011214;
+    --cor-erro: #ff0000; /* Exemplo de cor de erro */
+}
+
 body {
     font-family: 'Lexend Deca', sans-serif;
-    background-color: #fff;
+    background-color: var(--cor-fundo);
     padding: 20px;
+    color: var(--cor-texto);
 }
 
 /* Cursor personalizado */
@@ -13,61 +23,58 @@ html {
 }
 
 ::selection {
-    background-color: #7ec543; /* Cor de fundo da seleção */
-    color: #011214; /* Cor do texto selecionado */
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
 }
 
-input, textarea {
-    width: 93%;
+input, textarea, select {
+    width: 100%; /* Usar 100% para ocupar o espaço do container pai */
     padding: 10px;
     resize: none;
     border-radius: 10px;
     font-family: 'Lexend Deca';
-    border: solid 3px #011214;
+    border: solid 3px var(--cor-primaria);
+    box-sizing: border-box; /* Garante que padding não afete a largura total */
 }
 
-input::placeholder {
-    color: #011214;
+input::placeholder, textarea::placeholder {
+    color: var(--cor-primaria);
+    opacity: 0.7;
 }
 
 .error-message {
-    color: var(--error-color);
+    color: var(--cor-erro);
     font-size: 0.8em;
     display: block;
 }
 
 /* -------------------------------------
-   CONTAINER PRINCIPAL DO FORMULÁRIO
+    CONTAINER PRINCIPAL DO FORMULÁRIO
 ------------------------------------- */
 .edit-container {
-    max-width: 900px;
+    max-width: 700px;
     margin: 0 auto;
-    border: #011214 3px solid;
+    border: var(--cor-primaria) 3px solid;
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 11px 12px 0px 0px black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    box-shadow: 11px 12px 0px 0px var(--cor-primaria);
 }
 
 /* -------------------------------------
-   FORMULÁRIO EM DUAS COLUNAS
+    LAYOUT DO FORMULÁRIO
 ------------------------------------- */
 #formPerfil {
     display: flex;
     gap: 30px;
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo */
 }
 
-/* -------------------------------------
-   CAMPOS DE INFORMAÇÃO ATUAL
-------------------------------------- */
-.current-info {
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+.current-info, .bio-section {
+    flex: 1; /* Permite que as seções cresçam e ocupem o espaço disponível */
+    min-width: 250px; /* Largura mínima antes de quebrar a linha */
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
 .info-item {
@@ -82,16 +89,15 @@ input::placeholder {
 
 .info-content {
     display: flex;
-    gap: 10px;
     flex-direction: column;
+    gap: 10px;
 }
 
 /* -------------------------------------
-   INPUTS COM ÍCONES
+    INPUTS COM ÍCONES
 ------------------------------------- */
 .input-container {
     position: relative;
-    margin-bottom: 12px;
 }
 
 .input-container i {
@@ -99,59 +105,35 @@ input::placeholder {
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
-    color: #011214;
+    color: var(--cor-primaria);
     font-size: 18px;
-    width: 28px;
 }
 
-.input-container input {
-    padding-left: 34px;
+.input-container input, .input-container select {
+    padding-left: 40px; /* Espaço para o ícone */
 }
 
 /* -------------------------------------
-   CAMPO BIO (TEXTAREA COM ÍCONE)
+    CAMPO BIO (TEXTAREA)
 ------------------------------------- */
-.bio-section {
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.bioinfo {
-    margin-bottom: 169px;
-}
-
 .bioinfo.input-container i {
-    position: absolute;
-    left: 10px;
-    top: 21px;
-    color: #011214;
-    font-size: 20px;
-}
-
-.bioinfo textarea {
-    width: 100%;
-    height: 80px;
-    padding: 10px 10px 10px 36px; /* espaço pro ícone */
-    box-sizing: border-box;
-    resize: none;
-    font-size: 12px;
+    top: 21px; /* Ajuste específico para o ícone da bio */
 }
 
 #bio {
     height: 225px;
-    width: 245px;
+    padding-left: 40px; /* Espaço para o ícone */
 }
 
 .char-counter {
     text-align: right;
     font-size: 0.8em;
     color: #666;
+    margin-top: 5px;
 }
 
 /* -------------------------------------
-   UPLOAD DE FOTO DE PERFIL
+    UPLOAD DE FOTO DE PERFIL
 ------------------------------------- */
 .photo-upload {
     text-align: center;
@@ -159,226 +141,179 @@ input::placeholder {
 
 .avatar-existente {
     font-size: 12px;
-    background-color: #011214;
+    background-color: var(--cor-primaria);
     display: flex;
     align-items: center;
     font-family: 'Lexend Deca';
     gap: 15px;
     font-weight: 600;
     padding: 8px;
-    color: #7ec543;
+    color: var(--cor-secundaria);
     border-radius: 10px;
     justify-content: center;
-}
-
-.avatar-existente img {
-    width: 100px;
-}
-
-.upload-box {
-    border: 2px dashed #ccc;
-    padding: 30px;
-    margin: 0;
     cursor: pointer;
 }
 
-.or-text {
-    margin: 15px 0;
-    font-style: italic;
+.avatar-existente img {
+    width: 50px; /* Diminuído para melhor encaixe */
+    height: 50px;
+    border-radius: 50%;
 }
 
 /* -------------------------------------
-   BOTÃO DE ATUALIZAÇÃO
+    BOTÃO DE ATUALIZAÇÃO
 ------------------------------------- */
 .update-btn {
-    background-color: #7ec543;
-    color: #011214;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
     font-weight: bold;
     font-family: 'Lexend Deca';
     text-transform: uppercase;
     font-size: 14px;
-    padding: 15px 58px;
-    border-style: none;
+    padding: 15px 30px; /* Padding ajustado para ser mais flexível */
+    border: none;
     border-radius: 10px;
     cursor: pointer;
-    box-shadow: 5px 5px 0px black;
-    transition: background 0.2s;
-    margin-top: 51px;
+    box-shadow: 5px 5px 0px var(--cor-primaria);
+    transition: all 0.2s;
+    margin-top: 20px;
+    width: 100%; /* Ocupa toda a largura em telas menores */
+    max-width: 300px; /* Largura máxima em telas maiores */
+    align-self: center; /* Centraliza o botão */
 }
 
 .update-btn:hover {
-    background-color: #011214;
-    color: #7ec543;
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    box-shadow: 3px 3px 0px var(--cor-secundaria);
 }
 
 /* -------------------------------------
-   MODAL DE TROCA DE PERFIL
+    MODAL DE TROCA DE PERFIL
 ------------------------------------- */
-.dark {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-}
-
 .modal {
     display: none;
     position: fixed;
-    z-index: 3;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
-    height: fit-content;
-    background-color: rgba(0, 0, 0, 0.733);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow: auto; /* Permite rolagem se o conteúdo for grande */
 }
 
 .modal-content {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 1px solid black;
+    position: relative;
     background-color: #fefefe;
-    padding: 50px;
-    width: 700px;
-    max-width: 700px;
+    margin: 10% auto; /* Responsivo e centralizado */
+    padding: 30px;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .close {
     color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 25px;
     font-size: 32px;
     font-weight: 400;
 }
 
 .close:hover,
 .close:focus {
-    color: var(--azul-escuro-A);
+    color: var(--cor-primaria);
     text-decoration: none;
     cursor: pointer;
 }
 
-select{
-    width: 105%;
-    padding: 10px;
-    resize: none;
-    border-radius: 10px;
-    font-family: 'Lexend Deca';
-    border: solid 3px #011214;
-    padding-left: 34px;
-}
-
-select:focus {
-    outline: none;
-}
-
 /* -------------------------------------
-   SELEÇÃO DE AVATAR
+    MODO ESCURO
 ------------------------------------- */
-.avatar-selection {
-    text-align: left;
-    font-family: 'Lexend Deca';
-    font-size: 14px;
-    color: var(--verde-neutro);
-}
-
-.avatar-selection h2 {
-    font-size: 40px;
-    margin: 0%;
-    color: var(--azul-escuro-A);
-}
-
-.bold {
-    color: var(--vermelho);
-}
-
-/* Botão salvar avatar */
-#salvar-avatar {
-    margin-top: 20px;
-    padding: 15px 20px;
-    background-color: var(--azul-escuro-A);
-    color: var(--verde-padrao);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Lexend Deca';
-    font-weight: 600;
-    font-size: 13px;
-    text-transform: uppercase;
-    transition: all 0.3s;
-}
-
-#salvar-avatar:hover {
-    background-color: var(--verde-padrao);
-    color: var(--azul-escuro-A);
-    font-family: 700;
-}
-
-/* Alinhamento dos botões no modal */
-#button-r {
-    display: flex;
-    justify-content: flex-end;
-}
-
-#button-l {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Botões de avatar */
-.avatar-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-
-.avatar-button img {
-    width: 110px;
-    height: 110px;
-    border-radius: 50%;
-    margin: 10px;
-}
-
-.avatar-button.selected img {
-    transform: scale(1.1);
-    border: 5px solid var(--azul-escuro-A);
-}
-
-
-/* -------------------------------------
-   MODO ESCURO
-------------------------------------- */
-
 body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
+    --cor-fundo: #121212;
+    --cor-texto: #ffffff;
+    --cor-primaria: #7ec543;
+    --cor-secundaria: #011214;
 }
 
-body.dark-mode .edit-container{
+body.dark-mode .edit-container {
     background-color: #032F37;
-    border: #7ec543 3px solid;
-    box-shadow: 11px 12px 0px 0px #7ec543;
+    border-color: var(--cor-primaria);
+    box-shadow: 11px 12px 0px 0px var(--cor-primaria);
 }
 
-body.dark-mode input{
-    border: none;
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background-color: #1e1e1e;
+    border-color: #444;
+    color: #fff;
 }
 
-body.dark-mode .upload-box{
-    border: #7ec543 3px dashed;
-    border-radius: 10px;
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #aaa;
 }
 
-body.dark-mode #bio{
-    border: none;
+body.dark-mode .update-btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-secundaria);
+    box-shadow: 5px 5px 0px var(--cor-secundaria);
 }
 
-body.dark-mode select{
-    border: none;
+body.dark-mode .update-btn:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+}
+
+/* -------------------------------------
+    MEDIA QUERIES PARA RESPONSIVIDADE
+------------------------------------- */
+
+/* Telas de tablet e celulares maiores */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .edit-container {
+        padding: 20px;
+    }
+
+    #formPerfil {
+        flex-direction: column; /* Coloca as seções uma embaixo da outra */
+        gap: 20px;
+    }
+
+    #bio {
+        height: 180px; /* Altura menor para telas menores */
+    }
+}
+
+/* Telas de celulares menores */
+@media (max-width: 480px) {
+    .edit-container {
+        padding: 15px;
+        box-shadow: none; /* Remove a sombra para economizar espaço */
+        border: none;
+    }
+
+    .update-btn {
+        padding: 12px 20px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        margin-top: 20%;
+    }
+
+    .avatar-existente {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
