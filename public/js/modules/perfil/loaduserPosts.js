@@ -2,6 +2,7 @@ import CONFIG from "../config.js";
 import deletePost from "./deletePost.js";
 import likedPost from "../feed/likedPostOrNot.js";
 import commentPost from "../feed/commentPost.js";
+import { applyFilesPostButtonStyle } from "../ui/darkModeFeed.js";
 
 export default function loaduserPosts() {
     // Obtém o usernick da URL
@@ -81,6 +82,7 @@ export default function loaduserPosts() {
                     likedPost(post, postElement);
                     commentPost(postElement)
                 });
+                applyFilesPostButtonStyle();
             };
         });
 };

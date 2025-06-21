@@ -79,3 +79,50 @@ button:hover {
 html {
     cursor: url(http://www.rw-designer.com/cursor-extern.php?id=10190), auto;
 }
+
+body.dark-mode {
+    background-color: #011214;
+    color: #fff;
+}
+
+body.dark-mode .container {
+    background: none;
+}
+
+body.dark-mode input {
+    background-color: #032f37;
+    color: #fff;
+    border-color: #7ec543;
+}
+
+body.dark-mode input::placeholder {
+    color: #b1b1b1;
+}
+
+body.dark-mode .item label i {
+    color: #7ec543 !important;
+}
+
+body.dark-mode button {
+    background-color: #7ec543;
+    color: #011214;
+}
+
+body.dark-mode button:hover {
+    background-color: #011214;
+    color: #7ec543;
+}
+
+body.dark-mode .relate,
+body.dark-mode h2 {
+    color: #d1d1d1;
+}
+
+body.dark-mode .sec {
+    /* Mantém o layout, mas pode ajustar se necessário */
+}
+
+body.dark-mode ::selection {
+    background-color: #7ec543;
+    color: #011214;
+}

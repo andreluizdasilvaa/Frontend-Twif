@@ -3,7 +3,7 @@ export default function darkModeRelatorio() {
     const body = document.body;
     const logoHeader = document.getElementById('logo_header');
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeKey = 'darkMode';
+    const darkModeKey = 'dark-mode';
 
     // Função para alternar entre o modo claro e escuro
     function toggleDarkMode() {

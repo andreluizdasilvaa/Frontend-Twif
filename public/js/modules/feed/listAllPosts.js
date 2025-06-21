@@ -2,6 +2,7 @@ import CONFIG from '../config.js';
 import likedPost from './likedPostOrNot.js';
 import commentPost from './commentPost.js';
 import verifyErrorsApi from "../utils/verifyErrorsApi.js";
+import { applyFilesPostButtonStyle } from '../ui/darkModeFeed.js';
 
 export default function listAllPost() {
     fetch(`${CONFIG.URL_API}/feed/posts`, {
@@ -27,6 +28,7 @@ export default function listAllPost() {
                     likedPost(post, postElement);
                     commentPost(postElement);
                 });
+                applyFilesPostButtonStyle();
             }, 1000);
         });
 }

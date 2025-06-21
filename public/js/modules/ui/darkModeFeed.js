@@ -1,10 +1,20 @@
+export function applyFilesPostButtonStyle() {
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    const interactionPost = document.querySelectorAll('button.filesPost');
+    interactionPost.forEach(btn => {
+        btn.style.color = isDarkMode ? '#d1d1d1' : '';
+    });
+}
+
 export default function darkModeFeed() {
     const body = document.body;
     const logoHeader = document.getElementById('logo_header');
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeKey = 'darkMode';
+    const darkModeKey = 'dark-mode';
     const lampIcon = document.getElementById('lampIcon'); // Referência ao ícone da lâmpada
     const toggleText = darkModeToggle.querySelector('span'); // Referência ao texto do toggle
+    const botãoSubmitPost = document.getElementById('botao');
+    const interactionPost = document.querySelectorAll('button.filesPost');
 
     // Função para alternar entre o modo claro e escuro
     function toggleDarkMode() {
@@ -21,6 +31,8 @@ export default function darkModeFeed() {
 
         // Atualiza o texto do toggle
         toggleText.textContent = isDarkMode ? "Modo Claro" : "Modo Escuro"; // Troca o texto
+
+        applyFilesPostButtonStyle();
     }
 
     // Função para aplicar o tema ao carregar a página
@@ -29,6 +41,10 @@ export default function darkModeFeed() {
         
         // Aplica o tema armazenado
         if (isDarkMode) {
+            botãoSubmitPost.style.border = '1px solid #7EC543';
+            interactionPost.forEach(btn => {
+                btn.style.color = '#ffffff'
+            })
             body.classList.add('dark-mode');
             logoHeader.src = '../assets/img/logo-white.svg'; // Logo branca
             lampIcon.setAttribute("fill", "#011214"); // Lâmpada apagada no modo escuro
@@ -38,6 +54,8 @@ export default function darkModeFeed() {
             lampIcon.setAttribute("fill", "#7ec543"); // Lâmpada acesa no modo claro
             toggleText.textContent = "Modo Escuro"; // Texto inicial para modo claro
         }
+
+        applyFilesPostButtonStyle();
     }
 
     // Chama a função para aplicar o tema ao carregar a página

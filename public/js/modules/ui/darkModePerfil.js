@@ -2,7 +2,7 @@ export default function darkModePerfil() {
     // theme.js
     const body = document.body;
     const darkModeToggle = document.getElementById('darkModeToggle');
-    const darkModeKey = 'darkMode';
+    const darkModeKey = 'dark-mode';
 
     // Função para alternar entre o modo claro e escuro
     function toggleDarkMode() {

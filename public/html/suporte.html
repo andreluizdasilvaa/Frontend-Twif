@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
+        <script defer src="../js/modules/ui/darkModeSuporte.js"></script>
         <script type="module" src="../js/modules/suporte/suporte.js"></script>
 
         <!-- Toastify - Notificações -->
@@ -22,7 +23,7 @@
             <div class="container">
                 <div class="img-p"></div>
                 <a href="/feed" class="logo">
-                    <img src="../assets/img/logo-dark.svg" alt="logo" />
+                    <img src="../assets/img/logo-dark.svg" alt="logo" id="logo"/>
                 </a>
                 <p class="relate">Relate seu problema, e voltaremos com uma solução para você.</p>
 
@@ -34,7 +35,7 @@
                     <input type="text" name="texto" id="input-texto" placeholder="Nos diga o que rolou..." maxlength="190"/>
                 </div>
 
-                <button type="button">RELATAR</button>
+                <button id="relatar" type="button">RELATAR</button>
             </div>
         </section>
 
