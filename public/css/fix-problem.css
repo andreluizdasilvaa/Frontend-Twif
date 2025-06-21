@@ -1,14 +1,22 @@
+body, html {
+  overflow-x: hidden !important; 
+}
+
 /* Container principal para centralizar */
 .problemas {
   max-width: 700px;
   /* largura máxima para os cards */
-  margin: 40px auto;
+  margin: 40px 0px;
   /* centraliza horizontalmente e dá espaçamento vertical */
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   gap: 25px;
   /* espaço entre os cards */
+}
+
+.main-content {
+  width: 100%;
 }
 
 /* Cards maiores e centralizados */
@@ -27,7 +35,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 1000px;
+  width: 100%;
 }
 
 /* Cabeçalho do card */
@@ -99,6 +107,8 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
   align-items: flex-end;
   font-size: 0.8rem;
   color: #555;
@@ -288,4 +298,10 @@ body.dark-mode .tooltip .icon {
 }
 body.dark-mode .btn > .icon path {
   fill: #fff;
+}
+
+@media screen and (max-width: 653px) {
+  .data-report {
+    justify-content: flex-end;
+  }
 }
