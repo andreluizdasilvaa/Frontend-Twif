@@ -9,6 +9,14 @@ export default function loginForm() {
         const mail = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
+        if (
+            !mail.toLowerCase().endsWith('@aluno.ifsp.edu.br') &&
+            !mail.toLowerCase().endsWith('@ifsp.edu.br')
+        ) {
+            toastError('Use seu email institucional ...@aluno.ifsp.edu.br')
+            return;
+        }
+
         fetch(`${CONFIG.URL_API}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

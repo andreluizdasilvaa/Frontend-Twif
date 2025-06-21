@@ -7,5 +7,5 @@ document.addEventListener('DOMContentLoaded', () => {
     modalAvatarSelection();
     registerForm();
     darkModeRegister();
-    validateEmailOnBlur();
+    // validateEmailOnBlur();
 });

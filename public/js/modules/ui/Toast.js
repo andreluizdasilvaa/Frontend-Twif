@@ -5,8 +5,11 @@ export function toastSuccess(message, duration = 2000) {
         duration: duration,
         gravity: "top",
         position: "right",
-        backgroundColor: "#4BB543",
+        backgroundColor: "#7EC543",
         stopOnFocus: true,
+        style: {
+            fontFamily: "'Lexend Deca', Arial, sans-serif"
+        }
     }).showToast();
 }
 
@@ -16,8 +19,11 @@ export function toastError(message, duration = 2000) {
         duration: duration,
         gravity: "top",
         position: "right",
-        backgroundColor: "#FF3333",
+        backgroundColor: "#6B0000",
         stopOnFocus: true,
+        style: {
+            fontFamily: "'Lexend Deca', Arial, sans-serif"
+        }
     }).showToast();
 }
 
@@ -27,7 +33,10 @@ export function toastInfo(message, duration = 2000) {
         duration: duration,
         gravity: "top",
         position: "right",
-        backgroundColor: "#3498db",
+        backgroundColor: "#025648",
         stopOnFocus: true,
+        style: {
+            fontFamily: "'Lexend Deca', Arial, sans-serif"
+        }
     }).showToast();
 }
