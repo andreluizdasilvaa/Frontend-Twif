@@ -1,5 +1,6 @@
 import CONFIG from "../config.js";
 import verifyErrorsApi from "../utils/verifyErrorsApi.js";
+import { toastInfo } from "../ui/Toast.js";
 
 export default async function submitPost() {
     const form = document.getElementById('formPost');
@@ -12,7 +13,7 @@ export default async function submitPost() {
         const conteudo = document.getElementById('textarea').value;
 
         if (!conteudo) {
-            alert('Tamanho mínimo de 1 caractere');
+            toastInfo('Tamanho mínimo de 1 caractere');
             return; // Não prossegue se não houver conteúdo
         }
 

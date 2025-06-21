@@ -1,3 +1,5 @@
+import { toastError, toastSuccess } from "../ui/Toast";
+
 export default function submitEditarPerfil() {
     const form = document.getElementById('formPerfil');
 
@@ -29,7 +31,7 @@ export default function submitEditarPerfil() {
             }
 
             const resultado = await resposta.json();
-            alert('Perfil atualizado com sucesso!');
+            toastSuccess('Perfil atualizado com sucesso!');
             
             // Redireciona para o perfil do usuário usando o usernick retornado
             if (resultado.user && resultado.user.usernick) {
@@ -40,7 +42,7 @@ export default function submitEditarPerfil() {
             }
         } catch (err) {
             console.error("Erro:", err);
-            alert(err.message);
+            toastError(err.message);
         }
     });
 }

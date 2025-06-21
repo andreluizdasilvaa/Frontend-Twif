@@ -1,4 +1,5 @@
 import CONFIG from '../config.js';
+import { toastError, toastSuccess } from '../ui/Toast.js';
 
 export default function registerForm() {
     var modal = document.getElementById("avatarModal");
@@ -15,7 +16,7 @@ export default function registerForm() {
         var curso = document.getElementById('curso').value;
 
         if (!nome || !email || !usernick || !senha) {
-            alert('Por favor, preencha todos os campos obrigatórios antes de prosseguir.');
+            toastError('Por favor, preencha todos os campos obrigatórios antes de prosseguir.');
         } else {
             modal.style.display = 'block';
 
@@ -49,12 +50,12 @@ export default function registerForm() {
                 })
                 .then(data => {
                     // fazer um melhor tratamento!
-                    alert('Cadastro realizado com sucesso! Bem-vindo(a), ' + nome + '!');
+                    toastSuccess('Cadastro realizado com sucesso! Bem-vindo(a), ' + nome + '!');
                     window.location.href = '/feed';
                 })
                 .catch(error => {
                     console.error('Erro:', error);
-                    alert('Erro ao enviar formulário: ' + error.message);
+                    toastError('Erro ao enviar formulário: ' + error.message);
                 });
             });
         };

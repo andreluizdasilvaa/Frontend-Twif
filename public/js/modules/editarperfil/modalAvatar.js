@@ -1,3 +1,5 @@
+import { toastSuccess } from "../ui/Toast";
+
 export default function modalAvatar() {
     const trocaPerfilBtn = document.getElementById('troca_perfil');
     const avatarModal = document.getElementById('avatarModal');
@@ -33,7 +35,7 @@ export default function modalAvatar() {
 
     // Salvar avatar
     salvarAvatarBtn.addEventListener('click', () => {
-        alert('Avatar salvo e você será redirecionado!');
+        toastSuccess('Avatar salvo e você será redirecionado!');
         avatarModal.style.display = 'none';
     });
 

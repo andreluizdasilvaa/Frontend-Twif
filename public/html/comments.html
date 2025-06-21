@@ -12,6 +12,10 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet" />
+
+        <!-- Toastify - Notificações -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     </head>
     <body>
         <!-- Botão para voltar ao feed -->
@@ -64,12 +68,13 @@
         <script type="module">
             import CONFIG from '../js/modules/config.js';
             import verifyErrorsApi from '../js/modules/utils/verifyErrorsApi.js'
+            import { toastError, toastInfo } from '../js/modules/ui/Toast.js'
 
             document.addEventListener('DOMContentLoaded', () => {
                 const urlParams = new URLSearchParams(window.location.search);
                 const postId = urlParams.get('postId');
                 if (!postId) {
-                    alert('ID do post não encontrado!');
+                    toastError('ID do post não encontrado!');
                     window.location.href = '/feed';
                     return;
                 }
@@ -225,7 +230,7 @@
                         <p class="postInfoP">${new Date(post.createdAt).toLocaleString()}</p>`;
                     } catch (error) {
                         console.error('Erro ao carregar o post:', error);
-                        alert('Erro ao carregar o post. Verifique os logs para mais informações.');
+                        toastError('Erro ao carregar o post. Verifique os logs para mais informações.');
                     }
                 }
 
@@ -292,7 +297,6 @@
                             commentsList.appendChild(noCommentsMessage);
                         }
 
-                        // alert('Comentário deletado com sucesso.'); Fica mais clean sem esse alert
                     } catch (error) {
                         console.error('Erro ao deletar comentário:', error);
                     }
@@ -325,7 +329,7 @@
                     const newComment = newCommentInput.value.trim();
 
                     if (!newComment) {
-                        alert('O comentário não pode estar vazio.');
+                        toastInfo('O comentário não pode estar vazio.');
                         return;
                     }
 

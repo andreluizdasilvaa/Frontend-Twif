@@ -1,4 +1,5 @@
 import CONFIG from "../config.js";
+import { toastSuccess, toastError } from "../ui/Toast.js";
 
 export default function replaceProfilePicture() {
     document.getElementById('troca_perfil').addEventListener('click',  () => {
@@ -70,18 +71,18 @@ export default function replaceProfilePicture() {
             .then((resp) => {
                 if (resp.ok) {
                     return resp.json().then((data) => {
-                        alert(data.msg);
+                        toastSuccess(data.msg);
                         window.location.reload();
                     });
                 } else {
                     return resp.json().then((data) => {
-                        alert(data.message || "Erro ao atualizar a foto de perfil");
+                        toastError(data.message || "Erro ao atualizar a foto de perfil");
                     });
                 }
             })
             .catch((error) => {
                 console.error("Erro na requisição:", error);
-                alert("Erro na requisição");
+                toastError("Erro na requisição");
             });
         })
     });

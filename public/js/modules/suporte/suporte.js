@@ -1,4 +1,5 @@
 import CONFIG from "../config.js";
+import { toastInfo, toastError, toastSuccess } from "../ui/Toast.js";
 
 (async function validateSession() {
     // verifica se o usuario que entrou na pagina está logado para conseguir enviar sua msg no suporte
@@ -7,7 +8,7 @@ import CONFIG from "../config.js";
     })
     const result = await response.json();
     if(!result.isAuthenticated) {
-        alert('Você precisa está logado para enviar um suport');
+        toastInfo('Você precisa está logado para enviar um suport');
         window.location.href = "/";
     }
 })();
@@ -19,10 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Verifique se todos os campos foram preenchidos
         if (!description) {
-            alert('Escreva alguma coisa antes de enviar!');
+            toastInfo('Escreva alguma coisa antes de enviar!');
             return;
         } else if(description.length > 190) {
-            alert('Maximo de 190 caracteres!');
+            toastInfo('Maximo de 190 caracteres!');
             return;
         }
 
@@ -38,14 +39,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const result = await response.json();
             if (response.ok) {
-                alert(result.msg);
+                toastSuccess(result.msg);
                 window.location.href = "/";
             } else {
-                alert(result.msg || 'Ocorreu um erro, tente novamente mais tarde.');
+                toastError(result.msg || 'Ocorreu um erro, tente novamente mais tarde.');
             }
         } catch (error) {
             console.error('Erro ao enviar os dados:', error);
-            alert('Erro ao enviar os dados. Tente novamente mais tarde.');
+            toastError('Erro ao enviar os dados. Tente novamente mais tarde.');
         }
     });
 });

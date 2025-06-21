@@ -1,4 +1,5 @@
 import CONFIG from "../config.js";
+import { toastInfo } from "../ui/Toast.js";
 
 export default function deletePost(postElement) {
     const btn_excluir = postElement.querySelector('.btn_delete_post');
@@ -33,7 +34,7 @@ export default function deletePost(postElement) {
                         if (result.message === 'Post deletado com sucesso.' || result.ok) {
                             window.location.reload();
                         } else {
-                            alert(result.message);
+                            toastInfo(result.message);
                         }
                     })
                     .catch((error) => console.error('Erro ao deletar o post:', error));

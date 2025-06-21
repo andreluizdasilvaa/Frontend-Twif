@@ -1,4 +1,5 @@
 import CONFIG from "../config.js";
+import { toastInfo } from "../ui/Toast.js";
 
 export default function modalLogout() {
     // Modal de logout
@@ -27,7 +28,7 @@ export default function modalLogout() {
         })
             .then((resp) => {
                 if (resp.ok) {
-                    alert('Sessão encerrada!');
+                    toastInfo('Sessão encerrada!');
                     window.location.href = '/';
                 }
             })

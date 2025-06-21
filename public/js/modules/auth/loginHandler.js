@@ -1,4 +1,5 @@
 import CONFIG from '../config.js';
+import { toastError } from '../ui/Toast.js'
 
 export default function loginForm() {
     const form = document.getElementById('formLogin');
@@ -15,7 +16,7 @@ export default function loginForm() {
             credentials: 'include'
         })
         .then(response => {
-            if (response.statusText === 'Unauthorized') alert('Credenciais inválidas');
+            if (response.statusText === 'Unauthorized') toastError('Credenciais inválidas');
             if (!response.ok) throw new Error('Erro no login');
             return response.json();
         })

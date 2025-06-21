@@ -1,3 +1,5 @@
+import { toastError, toastSuccess } from "../ui/Toast.js";
+
 export default function checkUrlAlert() {
     // Obtém os parâmetros da query string da URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -7,27 +9,27 @@ export default function checkUrlAlert() {
 
     switch (true) {
         case success === 'true':
-            alert('Cadastrado com SUCESSO!');
+            toastSuccess('Cadastrado com SUCESSO!');
             window.location.href = '/';
             break;
 
         case error === '1':
-            alert('Email ou Senha Incorreto!');
+            toastError('Email ou Senha Incorreto!');
             window.location.href = '/';
             break;
 
         case error === '2':
-            alert('Senha Incorreta');
+            toastError('Senha Incorreta');
             window.location.href = '/';
             break;
 
         case error === '3':
-            alert('Faça Login para acessar!');
+            toastError('Faça Login para acessar!');
             window.location.href = '/';
             break;
 
         case error === '4':
-            alert('Sessão invalida!');
+            toastError('Sessão invalida!');
             window.location.href = '/';
             break;
 
