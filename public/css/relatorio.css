@@ -16,11 +16,15 @@
      color:#011214;
  }
 
- ::-webkit-scrollbar-thumb {
-    background-color: transparent;
+::-webkit-scrollbar-thumb {
+  background-color: transparent !important;
 }
 
  /* Sidebar */
+#relatorio-btn-checked {
+    background-color: #7EC543;
+    cursor: pointer;
+}
  .sidebar {
      width: 250px;
      height: 100%;
