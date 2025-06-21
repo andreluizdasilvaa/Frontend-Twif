@@ -7,7 +7,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--verde-neutro);
+    background-color: transparent;
     border-radius: 10px;
 }
 
@@ -833,7 +833,7 @@ body.dark-mode .user-profile-link{
 }
 
 body.dark-mode::-webkit-scrollbar-thumb {
-    background-color: var(--verde-padrao);
+    background-color: transparent;
 }
 
 body.dark-mode .btn_delete_post{

@@ -15,7 +15,11 @@
      background-color:#7EC543;
      color:#011214;
  }
- 
+
+ ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
  /* Sidebar */
  .sidebar {
      width: 250px;

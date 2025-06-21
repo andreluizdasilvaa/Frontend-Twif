@@ -120,3 +120,7 @@ h3 {
 #span-color-g {
   color: #5ea230;
 }
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
