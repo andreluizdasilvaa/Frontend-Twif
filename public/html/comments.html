@@ -20,7 +20,9 @@
     <body>
         <!-- Botão para voltar ao feed -->
         <header>
-            <img src="../assets/img/logo-dark.svg" class="logo_header" id="logo_header"/>
+            <a href="/feed">
+                <img src="../assets/img/logo-dark.svg" class="logo_header" id="logo_header"/>
+            </a>
             <a href="" class="me_user_perfil">
                 <img id="User_profile" src="../assets/profile-pictures/defaultphoto.png" alt="defaultphoto" />
             </a>
@@ -45,8 +47,10 @@
 
             <!-- Formulário para adicionar novo comentário -->
             <form id="commentForm">
-                <textarea id="newComment" placeholder="Escreva um comentário..." required></textarea>
-                <button type="submit" class="botao-comentar">Comentar</button>
+                <div class="content-formComent">
+                    <textarea id="newComment" placeholder="Escreva um comentário..." required></textarea>
+                    <button type="submit" class="botao-comentar">Comentar</button>
+                </div>
             </form>
 
             <!-- Modal de exclusão -->
@@ -176,6 +180,7 @@
 
                 function displayComment(comment) {
                     const commentItem = document.createElement('li');
+                    commentItem.classList.add('li-container-Comment');
                     const currentUserId = user_profile.dataset.userId;
 
                     // Verifica se o ID do usuário que postou o comentário é igual ao ID do usuário logado
